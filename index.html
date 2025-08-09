@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaspi Emulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="output"></div>
+
+    <script>
+        // Получаем данные из URL (без проверки ошибок, как в оригинале)
+        const params = new URLSearchParams(window.location.search);
+        const data = JSON.parse(decodeURIComponent(params.get('data') || '{}'));
+        
+        // Выводим данные (точно как в оригинале)
+        document.getElementById('output').innerHTML = `
+            <h2>${data.name || ''}</h2>
+            <p><b>ИИН:</b> ${data.inn || ''}</p>
+            <p><b>Дата рождения:</b> ${data.birth || ''}</p>
+            <p><b>Документ:</b> ${data.document || ''}</p>
+            <p><b>Дата выдачи:</b> ${data.issuence || ''}</p>
+            <p><b>Срок действия:</b> ${data.actions || ''}</p>
+        `;
+    </script>
+</body>
+</html>
